@@ -1,0 +1,55 @@
+<%= form_with(model: transcript, local: true) do |form| %>
+  <% if transcript.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(transcript.errors.count, "error") %> prohibited this transcript from being saved:</h2>
+
+      <ul>
+      <% transcript.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label "タイトル" %>
+    <%= form.text_field :title, id: :transcript_title, :size=>"45"%>
+  </div>
+
+  <div class="field">
+    <%= form.label "ファイル名" %>
+    <%= form.text_field :filename, id: :transcript_filename %>
+  </div>
+
+  <div class="field">
+    <%= form.label :file %>
+    <%#= form.text_field :file, id: :transcript_file %>
+    <%= form.file_field :imagefile, id: :transcript_file %>
+  </div>
+
+<!--
+  <div class="field">
+    <%= form.label :content_type %>
+    <%= form.text_field :content_type, id: :transcript_content_type %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description, id: :transcript_description %>
+  </div>
+
+-->
+  <div class="field">
+    <%= form.label :tag %>
+    <%= form.text_field :tag, id: :transcript_tag %>
+  </div>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id, id: :transcript_user_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
